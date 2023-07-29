@@ -12,6 +12,7 @@ GameObject:
   - component: {fileID: 8582403848581632362}
   - component: {fileID: 8922133575043328178}
   - component: {fileID: 5997682785121759141}
+  - component: {fileID: 2492902737730343489}
   m_Layer: 0
   m_Name: Ball
   m_TagString: Untagged
@@ -72,8 +73,8 @@ SpriteRenderer:
   m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 927106745
+  m_SortingLayer: 1
   m_SortingOrder: 0
   m_Sprite: {fileID: 8206260849537001921, guid: eec62bba7623e6145ac3b2cbdbf7044e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -133,10 +134,10 @@ Rigidbody2D:
   m_Simulated: 1
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
-  m_Mass: 1
+  m_Mass: 2
   m_LinearDrag: 0
   m_AngularDrag: 0
-  m_GravityScale: 1
+  m_GravityScale: 0
   m_Material: {fileID: 6200000, guid: c5c1474e851736d4c9bdbd513c28faea, type: 2}
   m_IncludeLayers:
     serializedVersion: 2
@@ -148,3 +149,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &2492902737730343489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6173135022087575496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c6667be956a5f4489144d74eca032f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _platform: {fileID: 5538395628497347184, guid: 2fbde2d9f16f01b43b15c67c1e424710, type: 3}
+  _rb: {fileID: 5997682785121759141}
+  _speed: 10
