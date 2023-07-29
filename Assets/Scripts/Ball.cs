@@ -56,7 +56,7 @@ public class Ball : MonoBehaviour
     private void StartBall()
     {
         _isStarted = true;
-        _rb.velocity = new Vector2(Random.Range(0, 10), Random.Range(0, 10)).normalized * _speed;
+        _rb.velocity = new Vector2(Random.Range(-10, 10), Random.Range(0, 10)).normalized * _speed;
         ;
     }
 
