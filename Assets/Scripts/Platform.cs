@@ -1,12 +1,13 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
+    #region Variables
+
     [SerializeField] private bool _isFirstLevel;
-    // Start is called before the first frame update
+
+    #endregion
+
     #region Unity lifecycle
 
     private void Start()
@@ -34,11 +35,12 @@ public class Platform : MonoBehaviour
     {
         Vector3 mousePosition = Input.mousePosition;
         Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-        
+
         //Vector3 currentPosition = transform.position;
         //currentPosition.x = worldMousePosition.x;
         //transform.position = currentPosition;
-        transform.position = new Vector3(Mathf.Clamp(worldMousePosition.x,-13,13) , transform.position.y , transform.position.z); 
+        transform.position = new Vector3(Mathf.Clamp(worldMousePosition.x, -13, 13), transform.position.y,
+            transform.position.z);
     }
 
     #endregion

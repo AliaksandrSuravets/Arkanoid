@@ -1,4 +1,3 @@
-
 using UnityEngine;
 
 public class Ball : MonoBehaviour
@@ -35,7 +34,6 @@ public class Ball : MonoBehaviour
             StartBall();
         }
     }
-    
 
     #endregion
 
@@ -43,22 +41,23 @@ public class Ball : MonoBehaviour
 
     private void MoveWithPad()
     {
-       // Vector3 platformPosition = _platform.transform.position;
-       // platformPosition += _offset;
-       // transform.position = platformPosition;
-       // Debug.Log(_platform.transform.position.x);
-       
-       Vector3 mousePosition = Input.mousePosition;
-       Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-       
-       transform.position = new Vector3(Mathf.Clamp(worldMousePosition.x,-13,13) , transform.position.y , transform.position.z); 
-       
+        // Vector3 platformPosition = _platform.transform.position;
+        // platformPosition += _offset;
+        // transform.position = platformPosition;
+        // Debug.Log(_platform.transform.position.x);
+
+        Vector3 mousePosition = Input.mousePosition;
+        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
+
+        transform.position = new Vector3(Mathf.Clamp(worldMousePosition.x, -13, 13), transform.position.y,
+            transform.position.z);
     }
 
     private void StartBall()
     {
         _isStarted = true;
-        _rb.velocity = new Vector2(Random.Range(0, 10), Random.Range(0, 10)).normalized * _speed;;
+        _rb.velocity = new Vector2(Random.Range(0, 10), Random.Range(0, 10)).normalized * _speed;
+        ;
     }
 
     #endregion

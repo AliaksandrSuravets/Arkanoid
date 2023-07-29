@@ -5902,6 +5902,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Platfrom
       objectReference: {fileID: 0}
+    - target: {fileID: 5538395628497347184, guid: 2fbde2d9f16f01b43b15c67c1e424710, type: 3}
+      propertyPath: _isFirstLevel
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6690659021483415897, guid: 2fbde2d9f16f01b43b15c67c1e424710, type: 3}
       propertyPath: m_RootOrder
       value: 1
