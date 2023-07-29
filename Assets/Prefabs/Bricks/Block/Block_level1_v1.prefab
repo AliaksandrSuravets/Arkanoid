@@ -149,3 +149,4 @@ MonoBehaviour:
   - {fileID: -4343962551062657670, guid: b4357c25cf2c0624dacf9764d541c140, type: 3}
   - {fileID: -3340852875451146931, guid: c154f375fcad6ea4f8105c81bc72b02b, type: 3}
   _valueScore: 5
+  _scoreSystem: {fileID: 9094173535981111354, guid: c92a4eecd0a7db94b8cb84b3feb92dd5, type: 3}

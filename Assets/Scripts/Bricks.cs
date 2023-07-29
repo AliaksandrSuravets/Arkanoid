@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class Bricks : MonoBehaviour
@@ -13,6 +14,11 @@ public class Bricks : MonoBehaviour
 
     #region Unity lifecycle
 
+    public void OnDestroy()
+    {
+        ScoreSystem.AddScore(_valueScore);
+    }
+
     public void OnCollisionEnter2D(Collision2D other)
     {
         _hp--;
@@ -24,7 +30,6 @@ public class Bricks : MonoBehaviour
         {
             _spriteRenderer.sprite = _hpSprites[_hp - 1];
         }
-       
     }
 
     #endregion

@@ -105,6 +105,7 @@ MonoBehaviour:
   - {fileID: 3352816357694077687, guid: 390d6a90493fa914f8cb2a6d02932bac, type: 3}
   - {fileID: 8078091233816708270, guid: ca03f2d9b0055714a9b9bb29babebecd, type: 3}
   _valueScore: 10
+  _scoreSystem: {fileID: 9094173535981111354, guid: c92a4eecd0a7db94b8cb84b3feb92dd5, type: 3}
 --- !u!61 &-2232632583096242530
 BoxCollider2D:
   m_ObjectHideFlags: 0
