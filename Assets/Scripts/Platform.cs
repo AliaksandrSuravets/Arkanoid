@@ -2,28 +2,16 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-    #region Variables
 
-    [SerializeField] private bool _isFirstLevel;
-
-    #endregion
 
     #region Unity lifecycle
-
-    private void Start()
-    {
-        if (_isFirstLevel)
-        {
-            ScoreSystem.StartScoreSystem();
-        }
-        else
-        {
-            ScoreSystem.Load();
-        }
-    }
-
+    
     private void Update()
     {
+        if (PauseService.Instance.IsPaused)
+        {
+            return;
+        }
         MoveWithMouse();
     }
 
@@ -36,11 +24,9 @@ public class Platform : MonoBehaviour
         Vector3 mousePosition = Input.mousePosition;
         Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
 
-        //Vector3 currentPosition = transform.position;
-        //currentPosition.x = worldMousePosition.x;
-        //transform.position = currentPosition;
-        transform.position = new Vector3(Mathf.Clamp(worldMousePosition.x, -13, 13), transform.position.y,
-            transform.position.z);
+        Vector3 currentPosition = transform.position;
+        currentPosition.x = worldMousePosition.x;
+        transform.position = currentPosition;
     }
 
     #endregion

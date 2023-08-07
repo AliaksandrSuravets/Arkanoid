@@ -9,13 +9,13 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7536286802066219917}
+  - component: {fileID: 2492902737730343489}
   - component: {fileID: 8582403848581632362}
   - component: {fileID: 8922133575043328178}
   - component: {fileID: 5997682785121759141}
-  - component: {fileID: 2492902737730343489}
   m_Layer: 0
   m_Name: Ball
-  m_TagString: Untagged
+  m_TagString: Ball
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -35,6 +35,22 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2492902737730343489
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6173135022087575496}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 11c6667be956a5f4489144d74eca032f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _platform: {fileID: 0}
+  _rb: {fileID: 5997682785121759141}
+  _speed: 10
+  _isStarted: 0
 --- !u!212 &8582403848581632362
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -149,18 +165,3 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
---- !u!114 &2492902737730343489
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6173135022087575496}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 11c6667be956a5f4489144d74eca032f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  _platform: {fileID: 5538395628497347184, guid: 2fbde2d9f16f01b43b15c67c1e424710, type: 3}
-  _rb: {fileID: 5997682785121759141}
-  _speed: 10

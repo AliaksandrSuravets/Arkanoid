@@ -3,23 +3,74 @@ using UnityEngine;
 public class Bricks : MonoBehaviour
 {
     #region Variables
-
+    [Header("Hp")]
     [SerializeField] private int _hp;
-    [SerializeField] private SpriteRenderer _spriteRenderer;
     [SerializeField] private Sprite[] _hpSprites;
-    [SerializeField] private int _valueScore;
-
+    [Header("Score")]
+    [SerializeField] private int _score;
+    [Header("States")]
+    [SerializeField] private bool _isInvisible;
+    [Header("Sprite Renderer")]
+    [SerializeField] private SpriteRenderer _spriteRenderer;
+    private bool _isGameOver;
+    
     #endregion
 
     #region Unity lifecycle
 
-    public void OnDestroy()
+    
+    public void Start()
     {
-        ScoreSystem.AddScore(_valueScore);
+        HpService.Instance.GameOver += GameOver;
+        if (_isInvisible)
+        {
+            _spriteRenderer.enabled = false;
+        }
+        if (_hp <= 0)
+        {
+            Debug.Log($"Bricks hp<=0 from start");
+            Destroy(gameObject);
+        }
     }
 
+    public void OnDestroy()
+    { 
+        HpService.Instance.GameOver -= GameOver;
+        if (!_isGameOver)
+        {
+            GameService.Instance.AddScore(_score);
+        }
+    }
+
+    private void GameOver()
+    {
+        _isGameOver = true;
+    }
     public void OnCollisionEnter2D(Collision2D other)
     {
+        
+        ApplyHit();
+        InvisibilityСheck();
+
+    }
+
+    private void InvisibilityСheck()
+    {
+        if (!_isInvisible)
+        {
+            return;
+        }
+
+        _isInvisible = false;
+        _spriteRenderer.enabled = true;
+
+    }
+    private void ApplyHit()
+    {
+        if (_isInvisible)
+        {
+           return; 
+        }
         _hp--;
         if (_hp == 0)
         {
@@ -27,9 +78,8 @@ public class Bricks : MonoBehaviour
         }
         else
         {
-            _spriteRenderer.sprite = _hpSprites[_hp - 1];
+            _spriteRenderer.sprite = _hp <= _hpSprites.Length ? _hpSprites[_hp - 1] : _hpSprites[^1];
         }
     }
-
     #endregion
 }

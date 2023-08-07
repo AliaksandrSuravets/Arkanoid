@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -7716822971825149487}
   m_Layer: 0
   m_Name: Tringle_level1_v1
-  m_TagString: Untagged
+  m_TagString: Bricks
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -155,4 +155,3 @@ MonoBehaviour:
   - {fileID: -6901496890688724293, guid: 12661a0d733f2494d9884453f175e7d5, type: 3}
   - {fileID: 3186011144192901408, guid: c8db0df8d7c74cf48a28f6c541faebfa, type: 3}
   _valueScore: 5
-  _scoreSystem: {fileID: 9094173535981111354, guid: c92a4eecd0a7db94b8cb84b3feb92dd5, type: 3}

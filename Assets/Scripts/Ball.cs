@@ -8,18 +8,33 @@ public class Ball : MonoBehaviour
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private int _speed;
 
-    private bool _isStarted;
+    [SerializeField] private bool _isStarted;
     private Vector3 _offset;
 
     #endregion
 
     #region Unity lifecycle
 
+    
+
+    private void OnDestroy()
+    {
+        Walls.Instance.OnCollisionBall -= OnCollisionBall;
+    }
+    
     private void Start()
     {
+        
+        Walls.Instance.OnCollisionBall += OnCollisionBall;
         _offset = transform.position - _platform.transform.position;
+ 
     }
-
+ 
+    private void OnCollisionBall()
+    {
+        _isStarted = false;
+    }
+    
     private void Update()
     {
         if (_isStarted)
@@ -41,23 +56,16 @@ public class Ball : MonoBehaviour
 
     private void MoveWithPad()
     {
-        // Vector3 platformPosition = _platform.transform.position;
-        // platformPosition += _offset;
-        // transform.position = platformPosition;
-        // Debug.Log(_platform.transform.position.x);
-
-        Vector3 mousePosition = Input.mousePosition;
-        Vector3 worldMousePosition = Camera.main.ScreenToWorldPoint(mousePosition);
-
-        transform.position = new Vector3(Mathf.Clamp(worldMousePosition.x, -13, 13), transform.position.y,
-            transform.position.z);
+        Vector3 platformPosition = _platform.transform.position;
+        platformPosition += _offset;
+        transform.position = platformPosition;
+        
     }
 
     private void StartBall()
     {
         _isStarted = true;
         _rb.velocity = new Vector2(Random.Range(-10, 10), Random.Range(0, 10)).normalized * _speed;
-        ;
     }
 
     #endregion
