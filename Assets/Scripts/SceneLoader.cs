@@ -1,16 +1,14 @@
 ﻿using UnityEngine.SceneManagement;
 
- 
-    public class SceneLoader : SingletonMonoBehaviour<SceneLoader>
+public class SceneLoader : SingletonMonoBehaviour<SceneLoader>
+{
+    #region Public methods
+
+    public void LoadNextGameScene()
     {
-        #region Public methods
-
-        public void LoadNextGameScene()
-        {
-            int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
-            SceneManager.LoadScene(nextSceneIndex);
-        }
-
-        #endregion
+        int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        SceneManager.LoadScene(nextSceneIndex);
     }
- 
+
+    #endregion
+}

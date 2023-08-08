@@ -1,21 +1,23 @@
 ﻿using System;
 using UnityEngine;
 
+public class Walls : SingletonMonoBehaviour<Walls>
+{
+    #region Events
 
-    public class Walls:SingletonMonoBehaviour<Walls>
+    public event Action OnCollisionBall;
+
+    #endregion
+
+    #region Unity lifecycle
+
+    private void OnTriggerExit2D(Collider2D other)
     {
-        #region Events
-
-        public event Action OnCollisionBall;
-
-        #endregion
-
-        private void OnTriggerExit2D(Collider2D other)
+        if (other.gameObject.tag == "Ball")
         {
-            if (other.gameObject.tag == "Ball")
-            {
-                OnCollisionBall?.Invoke();
-            }
+            OnCollisionBall?.Invoke();
         }
-
     }
+
+    #endregion
+}

@@ -7,7 +7,6 @@ public class Ball : MonoBehaviour
     [SerializeField] private Platform _platform;
     [SerializeField] private Rigidbody2D _rb;
     [SerializeField] private int _speed;
-
     [SerializeField] private bool _isStarted;
     private Vector3 _offset;
 
@@ -15,26 +14,12 @@ public class Ball : MonoBehaviour
 
     #region Unity lifecycle
 
-    
-
-    private void OnDestroy()
-    {
-        Walls.Instance.OnCollisionBall -= OnCollisionBall;
-    }
-    
     private void Start()
     {
-        
         Walls.Instance.OnCollisionBall += OnCollisionBall;
         _offset = transform.position - _platform.transform.position;
- 
     }
- 
-    private void OnCollisionBall()
-    {
-        _isStarted = false;
-    }
-    
+
     private void Update()
     {
         if (_isStarted)
@@ -50,6 +35,11 @@ public class Ball : MonoBehaviour
         }
     }
 
+    private void OnDestroy()
+    {
+        Walls.Instance.OnCollisionBall -= OnCollisionBall;
+    }
+
     #endregion
 
     #region Private methods
@@ -59,7 +49,11 @@ public class Ball : MonoBehaviour
         Vector3 platformPosition = _platform.transform.position;
         platformPosition += _offset;
         transform.position = platformPosition;
-        
+    }
+
+    private void OnCollisionBall()
+    {
+        _isStarted = false;
     }
 
     private void StartBall()

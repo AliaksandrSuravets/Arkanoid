@@ -2,16 +2,15 @@ using UnityEngine;
 
 public class Platform : MonoBehaviour
 {
-
-
     #region Unity lifecycle
-    
+
     private void Update()
     {
         if (PauseService.Instance.IsPaused)
         {
             return;
         }
+
         MoveWithMouse();
     }
 

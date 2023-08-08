@@ -1,36 +1,40 @@
 ﻿using TMPro;
 using UnityEngine;
- 
-    public class PauseService : SingletonMonoBehaviour<PauseService>
+
+public class PauseService : SingletonMonoBehaviour<PauseService>
+{
+    #region Variables
+
+    [SerializeField] private GameObject _pauseScreen;
+
+    #endregion
+
+    #region Properties
+
+    public bool IsPaused { get; private set; }
+
+    #endregion
+
+    #region Unity lifecycle
+
+    private void Update()
     {
-        #region Variables
-
-        public bool IsPaused { get; private set; }
-        [SerializeField] private GameObject _pauseScreen;
-
-        #endregion
-
-        #region Unity lifecycle
-
-        private void Update()
+        if (Input.GetKeyDown(KeyCode.Escape))
         {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                TogglePause();
-            }
+            TogglePause();
         }
-
-        #endregion
-
-        #region Private methods
-
-        private void TogglePause()
-        {
-            IsPaused = !IsPaused;
-            _pauseScreen.SetActive(IsPaused);
-            Time.timeScale = IsPaused ? 0 : 1;
-        }
-
-        #endregion
     }
- 
+
+    #endregion
+
+    #region Private methods
+
+    private void TogglePause()
+    {
+        IsPaused = !IsPaused;
+        _pauseScreen.SetActive(IsPaused);
+        Time.timeScale = IsPaused ? 0 : 1;
+    }
+
+    #endregion
+}
