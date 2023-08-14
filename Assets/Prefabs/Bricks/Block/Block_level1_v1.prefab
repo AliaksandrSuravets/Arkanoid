@@ -32,7 +32,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: -1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &3484865934609591288
 SpriteRenderer:
@@ -144,8 +144,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 2
-  _spriteRenderer: {fileID: 3484865934609591288}
   _hpSprites:
   - {fileID: -4343962551062657670, guid: b4357c25cf2c0624dacf9764d541c140, type: 3}
   - {fileID: -3340852875451146931, guid: c154f375fcad6ea4f8105c81bc72b02b, type: 3}
-  _valueScore: 5
+  _score: 10
+  _isInvisible: 0
+  _spriteRenderer: {fileID: 3484865934609591288}
+  _pickUpPrefab:
+  - {fileID: 800016449996368718, guid: fb0666c187c1c684f80d2be37ab0f930, type: 3}
+  - {fileID: 800016449996368718, guid: 7438bbf2311427f429d82b21fc09f021, type: 3}
+  - {fileID: 7166609702579254282, guid: 64cc6f07a11d859498834926455fbfed, type: 3}
+  - {fileID: 800016449996368718, guid: 7438bbf2311427f429d82b21fc09f021, type: 3}
+  - {fileID: 8410608400180233091, guid: 0102f0321fb74a74aa5711b76476ae01, type: 3}
+  - {fileID: 8410608400180233091, guid: 7500024c68cb8b243b68147c8a5324a6, type: 3}

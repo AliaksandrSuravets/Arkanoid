@@ -99,12 +99,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 3
-  _spriteRenderer: {fileID: 1344121699936652173}
   _hpSprites:
   - {fileID: -6648594905771823888, guid: e5f4ca9b0de3b1142bc81471225d9b51, type: 3}
   - {fileID: 8002745491562540804, guid: 6611f6dde7199254da408c86ee2e11bc, type: 3}
   - {fileID: -5678227729731648827, guid: b08dd8a95bca38b409fe527cb77f6a5a, type: 3}
-  _valueScore: 15
+  _score: 10
+  _isInvisible: 0
+  _spriteRenderer: {fileID: 1344121699936652173}
+  _pickUpPrefab:
+  - {fileID: 1962078431843652751, guid: 59155d4b52beb264c9ce13d93f18c513, type: 3}
+  - {fileID: 5616614893155178457, guid: bbb00bd7e3b873a47849070f67641bdb, type: 3}
+  - {fileID: 8632328583076539627, guid: 0ddead69d3057f54bb66e693d2071b2d, type: 3}
 --- !u!61 &-5143326941074701926
 BoxCollider2D:
   m_ObjectHideFlags: 0

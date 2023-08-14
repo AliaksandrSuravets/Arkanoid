@@ -150,8 +150,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _hp: 2
-  _spriteRenderer: {fileID: 7611476782867967015}
   _hpSprites:
   - {fileID: -6901496890688724293, guid: 12661a0d733f2494d9884453f175e7d5, type: 3}
   - {fileID: 3186011144192901408, guid: c8db0df8d7c74cf48a28f6c541faebfa, type: 3}
-  _valueScore: 5
+  _score: 10
+  _isInvisible: 0
+  _spriteRenderer: {fileID: 7611476782867967015}
+  _pickUpPrefab:
+  - {fileID: 5616614893155178457, guid: bbb00bd7e3b873a47849070f67641bdb, type: 3}
+  - {fileID: 8632328583076539627, guid: 0ddead69d3057f54bb66e693d2071b2d, type: 3}
+  - {fileID: 8410608400180233091, guid: 0102f0321fb74a74aa5711b76476ae01, type: 3}
+  - {fileID: 8410608400180233091, guid: 7500024c68cb8b243b68147c8a5324a6, type: 3}
