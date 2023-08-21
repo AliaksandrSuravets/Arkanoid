@@ -1,3 +1,4 @@
+using System;
 using Arkanoid.Game.PickUps;
 using Arkanoid.Game.Services;
 using UnityEngine;
@@ -23,10 +24,18 @@ namespace Arkanoid.Game
 
         #endregion
 
+        #region Events
+
+        public static event Action<Bricks> OnCreated;
+        public static event Action<Bricks> OnDestroyed;
+
+        #endregion
+
         #region Unity lifecycle
 
         public void Start()
         {
+            OnCreated?.Invoke(this);
             HpService.Instance.GameOver += GameOver;
             if (_isInvisible)
             {
@@ -38,6 +47,11 @@ namespace Arkanoid.Game
                 Debug.Log("Bricks hp<=0 from start");
                 Destroy(gameObject);
             }
+        }
+
+        private void OnDestroy()
+        {
+            OnDestroyed?.Invoke(this);
         }
 
         public void OnCollisionEnter2D(Collision2D other)
@@ -82,7 +96,7 @@ namespace Arkanoid.Game
                 GameService.Instance.AddScore(_score);
                 if (_pickUpPrefab.Length > 0)
                 {
-                    PickUpService.Instance.CreatePickUp(_pickUpPrefab, transform.position);
+                    PickUpService.Instance.CreatePickUp(transform.position);
                 }
             }
         }

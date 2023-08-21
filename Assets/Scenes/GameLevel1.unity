@@ -6033,6 +6033,26 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3841536241029683811, guid: a441c69eb3eb5e64ea4757968f023ba7, type: 3}
+      propertyPath: _pickUps.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3841536241029683811, guid: a441c69eb3eb5e64ea4757968f023ba7, type: 3}
+      propertyPath: _pickUps.Array.data[0].SpawnWeight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3841536241029683811, guid: a441c69eb3eb5e64ea4757968f023ba7, type: 3}
+      propertyPath: _pickUps.Array.data[1].SpawnWeight
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 3841536241029683811, guid: a441c69eb3eb5e64ea4757968f023ba7, type: 3}
+      propertyPath: _pickUps.Array.data[0].PickUpPrefab
+      value: 
+      objectReference: {fileID: 1650974374917072436, guid: 2145c86a7b52bde4183f799c82dfc177, type: 3}
+    - target: {fileID: 3841536241029683811, guid: a441c69eb3eb5e64ea4757968f023ba7, type: 3}
+      propertyPath: _pickUps.Array.data[1].PickUpPrefab
+      value: 
+      objectReference: {fileID: 1962078431843652751, guid: 59155d4b52beb264c9ce13d93f18c513, type: 3}
     - target: {fileID: 6264323666954469715, guid: a441c69eb3eb5e64ea4757968f023ba7, type: 3}
       propertyPath: m_Name
       value: ServiceConteiner

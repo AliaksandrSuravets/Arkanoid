@@ -20,13 +20,21 @@ namespace Arkanoid.Game
 
         #region Unity lifecycle
 
+        public static event Action<Ball> OnCreated;
+        public static event Action<Ball> OnDestroyed;
+        
+        private void Awake()
+        {
+            _offset = transform.position - _platform.transform.position;
+
+            OnCreated?.Invoke(this);
+        }
         private void Start()
         {
             Walls.Instance.OnCollisionBall += OnCollisionBall;
-            //_offset = transform.position - _platform.transform.position;
-            _offset = new Vector3(0, 0.625f, 0);
         }
 
+        
         private void Update()
         {
             if (_isStarted)
@@ -44,7 +52,7 @@ namespace Arkanoid.Game
 
         private void OnDestroy()
         {
-            Walls.Instance.OnCollisionBall -= OnCollisionBall;
+            OnDestroyed?.Invoke(this);
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -53,9 +61,18 @@ namespace Arkanoid.Game
             {
                 if (_isGlue)
                 {
+                    _offset = new Vector3( (transform.position.x - _platform.transform.position.x) , 0.5f, 0);
                     _isStarted = false;
                 }
             }
+        }
+        public Ball Clone()
+        {
+            Ball clone = Instantiate(this, transform.position, Quaternion.identity);
+            clone._isStarted = _isStarted;
+            clone._offset = _offset;
+            clone._rb.velocity = _rb.velocity;
+            return clone;
         }
 
         #endregion
@@ -76,14 +93,10 @@ namespace Arkanoid.Game
             _rb.velocity = velocity;
         }
 
-        public void CreateNewBall()
-        {
-            Instantiate(this, transform.position, Quaternion.identity).StartBall();
-        }
+ 
 
         public void MakeGooey()
         {
-            // _offset = new Vector3( (transform.position.x - _platform.transform.position.x) , 0.5f, 0);
             _isGlue = true;
         }
 
@@ -103,7 +116,7 @@ namespace Arkanoid.Game
             _isStarted = false;
         }
 
-        private void StartBall()
+        public void StartBall()
         {
             _isGlue = false;
             _isStarted = true;

@@ -1,13 +1,14 @@
-﻿using Arkanoid.Utility;
+﻿using System;
+using Arkanoid.Utility;
 using UnityEngine;
 
 namespace Arkanoid.Game.Services
 {
     public class PauseService : SingletonMonoBehaviour<PauseService>
     {
-        #region Variables
+        #region Events
 
-        [SerializeField] private GameObject _pauseScreen;
+        public event Action<bool> OnPaused;
 
         #endregion
 
@@ -29,13 +30,13 @@ namespace Arkanoid.Game.Services
 
         #endregion
 
-        #region Private methods
+        #region Public methods
 
-        private void TogglePause()
+        public void TogglePause()
         {
             IsPaused = !IsPaused;
-            _pauseScreen.SetActive(IsPaused);
             Time.timeScale = IsPaused ? 0 : 1;
+            OnPaused?.Invoke(IsPaused);
         }
 
         #endregion

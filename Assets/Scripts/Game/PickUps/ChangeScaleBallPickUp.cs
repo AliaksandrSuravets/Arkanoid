@@ -16,25 +16,12 @@ namespace Arkanoid.Game.PickUps
         protected override void PerformActions()
         {
             base.PerformActions();
-            Ball[] balls = GetAllAliveBalls();
-            if (balls.Length <= 0)
+            int ballsCount = LevelService.Instance.Balls.Count;
+            for (int i = 0; i < ballsCount; i++)
             {
-                return;
-            }
-
-            foreach (Ball ball in balls)
-            {
+                Ball ball = LevelService.Instance.Balls[i];
                 ball.ChangeScale(_scaleToChange);
             }
-        }
-
-        #endregion
-
-        #region Private methods
-
-        private Ball[] GetAllAliveBalls()
-        {
-            return FindObjectsOfType<Ball>();
         }
 
         #endregion
