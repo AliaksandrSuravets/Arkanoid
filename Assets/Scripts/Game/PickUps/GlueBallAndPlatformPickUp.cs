@@ -1,5 +1,4 @@
 using Arkanoid.Game.Services;
-using UnityEngine;
 
 namespace Arkanoid.Game.PickUps
 {

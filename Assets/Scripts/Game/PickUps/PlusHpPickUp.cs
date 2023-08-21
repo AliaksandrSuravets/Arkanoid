@@ -1,3 +1,4 @@
+using Arkanoid.Game.Services;
 using UnityEngine;
 
 namespace Arkanoid.Game.PickUps
@@ -15,7 +16,7 @@ namespace Arkanoid.Game.PickUps
         protected override void PerformActions()
         {
             base.PerformActions();
-            Services.HpService.Instance.AddHP(_hpToChange);
+            HpService.Instance.AddHP(_hpToChange);
         }
 
         #endregion

@@ -56,8 +56,23 @@ namespace Arkanoid.Game
 
         public void OnCollisionEnter2D(Collision2D other)
         {
+            Hit();
+        }
+
+        #endregion
+
+        #region Public methods
+
+        public void Hit()
+        {
             ApplyHit();
             InvisibilityСheck();
+        }
+
+        public void FullDestroy()
+        {
+            DestroyBrick();
+            Destroy(gameObject);
         }
 
         #endregion
@@ -74,8 +89,7 @@ namespace Arkanoid.Game
             _hp--;
             if (_hp <= 0)
             {
-                DestroyBrick();
-                Destroy(gameObject);
+                FullDestroy();
             }
             else
             {

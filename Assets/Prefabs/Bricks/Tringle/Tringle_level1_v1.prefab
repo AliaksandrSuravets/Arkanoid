@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 7611476782867967015}
   - component: {fileID: 2731179596787741985}
   - component: {fileID: -7716822971825149487}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Tringle_level1_v1
   m_TagString: Bricks
   m_Icon: {fileID: 0}

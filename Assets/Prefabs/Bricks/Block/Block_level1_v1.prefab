@@ -12,7 +12,7 @@ GameObject:
   - component: {fileID: 3484865934609591288}
   - component: {fileID: -2849515888363610449}
   - component: {fileID: 4572476562483634124}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: Block_level1_v1
   m_TagString: Bricks
   m_Icon: {fileID: 0}

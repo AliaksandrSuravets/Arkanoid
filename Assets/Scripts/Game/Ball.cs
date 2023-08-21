@@ -1,5 +1,4 @@
 using System;
-using Arkanoid.Game.Services;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -14,27 +13,40 @@ namespace Arkanoid.Game
         [SerializeField] private int _speed;
         [SerializeField] private bool _isStarted;
         [SerializeField] private Vector3 _offset;
+        [Header("Sprite")]
+        [SerializeField] private SpriteRenderer _spriteRenderer;
+        [Header("Trail")]
+        [SerializeField] private TrailRenderer _trailRenderer;
+        [Header("Explosive")]
+        [SerializeField] private float _explosiveRadius = 1f;
+        [SerializeField] private LayerMask _blockMask;
+        private bool _isExplosive;
+
         private bool _isGlue;
+
+        #endregion
+
+        #region Events
+
+        public static event Action<Ball> OnCreated;
+        public static event Action<Ball> OnDestroyed;
 
         #endregion
 
         #region Unity lifecycle
 
-        public static event Action<Ball> OnCreated;
-        public static event Action<Ball> OnDestroyed;
-        
         private void Awake()
         {
             _offset = transform.position - _platform.transform.position;
 
             OnCreated?.Invoke(this);
         }
+
         private void Start()
         {
             Walls.Instance.OnCollisionBall += OnCollisionBall;
         }
 
-        
         private void Update()
         {
             if (_isStarted)
@@ -61,23 +73,33 @@ namespace Arkanoid.Game
             {
                 if (_isGlue)
                 {
-                    _offset = new Vector3( (transform.position.x - _platform.transform.position.x) , 0.5f, 0);
+                    _offset = new Vector3(transform.position.x - _platform.transform.position.x, 0.9f, 0);
                     _isStarted = false;
                 }
             }
+
+            if (_isExplosive)
+            {
+                OnDestroyedActions();
+            }
         }
-        public Ball Clone()
+
+        private void OnDrawGizmosSelected()
         {
-            Ball clone = Instantiate(this, transform.position, Quaternion.identity);
-            clone._isStarted = _isStarted;
-            clone._offset = _offset;
-            clone._rb.velocity = _rb.velocity;
-            return clone;
+            Gizmos.color = Color.red;
+            Gizmos.DrawWireSphere(transform.position, _explosiveRadius);
         }
 
         #endregion
 
         #region Public methods
+
+        public void ChangeExplosive()
+        {
+            _isExplosive = true;
+            _trailRenderer.startColor = Color.red;
+            _spriteRenderer.color = Color.red;
+        }
 
         public void ChangeScale(float valueChange)
         {
@@ -93,11 +115,27 @@ namespace Arkanoid.Game
             _rb.velocity = velocity;
         }
 
- 
+        public Ball Clone()
+        {
+            Ball clone = Instantiate(this, transform.position, Quaternion.identity);
+            clone._isStarted = _isStarted;
+            clone._offset = _offset;
+            clone._rb.velocity = _rb.velocity;
+            clone._isGlue = _isGlue;
+            clone._isExplosive = _isExplosive;
+            return clone;
+        }
 
         public void MakeGooey()
         {
             _isGlue = true;
+        }
+
+        public void StartBall()
+        {
+            _isGlue = false;
+            _isStarted = true;
+            _rb.velocity = new Vector2(Random.Range(-10, 10), Random.Range(0, 10)).normalized * _speed;
         }
 
         #endregion
@@ -116,11 +154,17 @@ namespace Arkanoid.Game
             _isStarted = false;
         }
 
-        public void StartBall()
+        private void OnDestroyedActions()
         {
-            _isGlue = false;
-            _isStarted = true;
-            _rb.velocity = new Vector2(Random.Range(-10, 10), Random.Range(0, 10)).normalized * _speed;
+            Collider2D[] colliders = Physics2D.OverlapCircleAll(transform.position, _explosiveRadius, _blockMask);
+
+            foreach (Collider2D col in colliders)
+            {
+                if (col.TryGetComponent(out Bricks bricks))
+                {
+                    bricks.FullDestroy();
+                }
+            }
         }
 
         #endregion

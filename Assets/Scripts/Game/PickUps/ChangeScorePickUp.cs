@@ -1,3 +1,4 @@
+using Arkanoid.Game.Services;
 using UnityEngine;
 
 namespace Arkanoid.Game.PickUps
@@ -15,7 +16,7 @@ namespace Arkanoid.Game.PickUps
         protected override void PerformActions()
         {
             base.PerformActions();
-            Services.GameService.Instance.AddScore(_scoreToChange);
+            GameService.Instance.AddScore(_scoreToChange);
         }
 
         #endregion
