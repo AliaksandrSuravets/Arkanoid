@@ -1,4 +1,5 @@
-﻿using Arkanoid.Utility;
+﻿using Arkanoid.Game.Services;
+using Arkanoid.Utility;
 using UnityEngine.SceneManagement;
 
 namespace Arkanoid.Infrastructure
@@ -9,6 +10,12 @@ namespace Arkanoid.Infrastructure
 
         public void LoadNextGameScene()
         {
+            if (HpService.Instance.GameOverBool || SceneManager.GetActiveScene().name == SceneLoaderHelper.End ||
+                SceneManager.GetActiveScene().name == SceneLoaderHelper.StartGame)
+            {
+                return;
+            }
+
             int nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
             SceneManager.LoadScene(nextSceneIndex);
         }

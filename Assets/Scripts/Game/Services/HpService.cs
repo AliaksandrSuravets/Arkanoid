@@ -1,4 +1,5 @@
 ﻿using System;
+using Arkanoid.Infrastructure;
 using Arkanoid.Utility;
 using TMPro;
 using UnityEngine;
@@ -23,6 +24,8 @@ namespace Arkanoid.Game.Services
         #endregion
 
         #region Properties
+
+        public bool GameOverBool { get; private set; }
 
         public int Hp { get; private set; }
 
@@ -66,17 +69,18 @@ namespace Arkanoid.Game.Services
                 return;
             }
 
-            Time.timeScale = 0;
-            _gameOver.SetActive(true);
-            _gameOverScoreLabel.text = $"Score: {GameService.Instance.Score}";
-            if (Input.GetKeyDown(KeyCode.Space))
-            {
-                Time.timeScale = 1;
-                _gameOver.SetActive(false);
-                GameOver?.Invoke();
-                Hp = _hp;
-                SceneManager.LoadScene(0);
-            }
+            //Time.timeScale = 0;
+            //_gameOver.SetActive(true);
+            //_gameOverScoreLabel.text = $"Score: {GameService.Instance.Score}";
+            //if (Input.GetKeyDown(KeyCode.Space))
+            //{
+            //   Time.timeScale = 1;
+            //    _gameOver.SetActive(false);
+            GameOverBool = true;
+            GameOver?.Invoke();
+            //Hp = _hp;
+            SceneManager.LoadScene(SceneLoaderHelper.End);
+            //}
         }
 
         private void MinusHP()

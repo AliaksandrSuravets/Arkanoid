@@ -41,7 +41,7 @@ namespace Arkanoid.Game.Services
 
         private void GameOver()
         {
-            Score = 0;
+            //Score = 0;
             Debug.Log("GameService GameOver");
         }
 
